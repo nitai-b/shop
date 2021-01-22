@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:shop/providers/product.dart';
 import 'package:shop/screens/product_detail_screen.dart';
@@ -34,13 +36,18 @@ class ProductItem extends StatelessWidget {
           ),
         ),
         footer: GridTileBar(
-          leading: IconButton(
-            icon: Icon(
-                product.isFavourite ? Icons.favorite : Icons.favorite_border),
-            onPressed: () {
-              product.toggleFavouriteStatus();
+          leading: Consumer<Product>(
+            builder: (ctx, product, child) {
+              return IconButton(
+                icon: Icon(product.isFavourite
+                    ? Icons.favorite
+                    : Icons.favorite_border),
+                onPressed: () {
+                  product.toggleFavouriteStatus();
+                },
+                color: Theme.of(context).accentColor,
+              );
             },
-            color: Theme.of(context).accentColor,
           ),
           trailing: IconButton(
             icon: Icon(Icons.shopping_cart),
