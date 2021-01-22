@@ -14,10 +14,15 @@ class ProductItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(10.0),
       child: GridTile(
         child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-              return ProductDetailScreen(title);
-            }));
+          //this is how you pass data using the constructor
+          // onTap: () {
+          //   Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+          //     return ProductDetailScreen(title);
+          //   }));
+          // },
+          //this is how you pass data using the named constructor and a named route in the main dart file
+          onTap: (){
+            Navigator.of(context).pushNamed(ProductDetailScreen.routeName, arguments: id);
           },
           child: Image.network(
             imageUrl,
