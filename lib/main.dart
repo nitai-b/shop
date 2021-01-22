@@ -13,7 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => ProductsProvider(),
+      // value: ProductsProvider(), // this syntax is using the .value syntax
+      // don't know why. but there is something about how flutter recycles widgets and stuff like that
+      create: (ctx) => ProductsProvider(),
       child: MaterialApp(
         title: 'Nitai Shop',
         theme: ThemeData(

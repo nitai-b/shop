@@ -19,8 +19,8 @@ class ProductsGrid extends StatelessWidget {
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
       itemCount: products.length,
-      itemBuilder: (context, i) => ChangeNotifierProvider(
-        create: (context) => products[i], // products[i] is One Product
+      itemBuilder: (context, i) => ChangeNotifierProvider.value(
+        value: products[i], // products[i] is One Product
         // so this would return an instance of product as it is in the ProductsProvider
         child: ProductItem(
             // products[i].id, products[i].title, products[i].imageUrl
