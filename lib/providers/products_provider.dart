@@ -45,4 +45,8 @@ class ProductsProvider with ChangeNotifier{
     return [..._items]; // this is returning a copy of the items
   }
 
+  Product findById(String id){
+    return _items.firstWhere((product) => product.id == id);
+  }
+
 }
