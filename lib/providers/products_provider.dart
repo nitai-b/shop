@@ -39,9 +39,24 @@ class ProductsProvider with ChangeNotifier {
     ),
   ];
 
+  var _showFavouritesOnly = false;
+
   //define the getter for the list of products defined as a property
   List<Product> get items {
+    if (_showFavouritesOnly) {
+      return _items.where((prodItem) => prodItem.isFavourite).toList();
+    }
     return [..._items]; // this is returning a copy of the items
+  }
+
+  void showFavouritesOnly() {
+    _showFavouritesOnly = true;
+    notifyListeners();
+  }
+
+  void showAll() {
+    _showFavouritesOnly = false;
+    notifyListeners();
   }
 
   Product findById(String id) {
