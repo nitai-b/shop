@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop/providers/cart.dart';
 import 'package:shop/screens/product_detail_screen.dart';
 import 'package:shop/screens/products_overview_screen.dart';
 import 'package:provider/provider.dart';
@@ -12,10 +13,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      // value: ProductsProvider(), // this syntax is using the .value syntax
-      // don't know why. but there is something about how flutter recycles widgets and stuff like that
-      create: (ctx) => ProductsProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => ProductsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => Cart(),
+        ),
+      ],
       child: MaterialApp(
         title: 'Nitai Shop',
         theme: ThemeData(
